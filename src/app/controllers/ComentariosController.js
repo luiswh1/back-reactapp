@@ -6,10 +6,8 @@ class ComentarioController {
             const comentarios = await Comentario.findAll({
 
             });
-
             return res.json(comentarios)
         }
-
         catch (error) {
             console.log(error)
             return res.status(400).send({
