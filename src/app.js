@@ -1,10 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import './database/index';
+
 import ComentarioRout from './app/routes/comentario';
 import ContatoRout from './app/routes/contatos';
-import cors from 'cors';
 
+const cors = require("cors");
 
 class App {
     constructor() {
@@ -15,8 +16,8 @@ class App {
     }
 
     config() {
-        this.server.use(express.json());
         this.server.use(cors());
+        this.server.use(express.json());
         dotenv.config({
             path: process.env.NODE_ENV === 'test'
             ? '.env.test' : '.env',
