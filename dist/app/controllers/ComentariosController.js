@@ -6,10 +6,8 @@ class ComentarioController {
             const comentarios = await _Comentario2.default.findAll({
 
             });
-
             return res.json(comentarios)
         }
-
         catch (error) {
             console.log(error)
             return res.status(400).send({
@@ -28,7 +26,7 @@ class ComentarioController {
         }
         catch (error) {
             return res.status(400).send({
-                message: "Falha ao exibir comentarios"
+                message: "Falha ao exibir comentario"
             });
         }
     }
