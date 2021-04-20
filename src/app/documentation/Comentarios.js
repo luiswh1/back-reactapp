@@ -1,6 +1,7 @@
 exports.Comentario = {
     $id: 123,
-    $name: 'Luis'
+    $name: 'Luis',
+    $comentario: 'Comentario documentação'
 };
 
 exports.ComentarioCreate = {

@@ -102,14 +102,11 @@
           }
         ],
         "responses": {
-          "200": {
+          "201": {
+            "description": "Created",
             "schema": {
               "$ref": "#/definitions/Comentario"
-            },
-            "description": "OK"
-          },
-          "201": {
-            "description": "Created"
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -316,11 +313,16 @@
         "name": {
           "type": "string",
           "example": "Luis"
+        },
+        "comentario": {
+          "type": "string",
+          "example": "Comentario documentação"
         }
       },
       "required": [
         "id",
-        "name"
+        "name",
+        "comentario"
       ]
     },
     "ComentarioCreate": {

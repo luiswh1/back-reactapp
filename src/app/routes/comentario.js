@@ -74,7 +74,7 @@ routes.post(
         }
     */
     /*
-        #swagger.responses[200] = {
+        #swagger.responses[201] = {
             schema: {
                 "$ref": "#/definitions/Comentario"
             }
