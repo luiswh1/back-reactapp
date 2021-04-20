@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "predev": "yarn doc",
     "dev": "nodemon ./src/server.js",
     "build": "sucrase ./src -d ./dist --transforms imports",
     "start": "node -r dotenv/config ./dist/server.js",
