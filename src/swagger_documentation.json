@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Projeto Trainee",
-    "description": "Projeto Trainee"
+    "title": "Documentação Curriculo",
+    "description": "Documentação Curriculo"
   },
   "host": "localhost:3000",
   "basePath": "/",
@@ -17,6 +17,367 @@
   "produces": [
     "application/json"
   ],
-  "paths": {},
-  "definitions": {}
+  "paths": {
+    "/contatos": {
+      "post": {
+        "tags": [
+          "Contatos"
+        ],
+        "description": "Criar um novo contato",
+        "parameters": [
+          {
+            "name": "contato",
+            "in": "body",
+            "description": "Dados do contato",
+            "schema": {
+              "$ref": "#/definitions/ContatosCreate"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do contato",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Contatos"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Falha no cadastro de um novo contato"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comentarios": {
+      "get": {
+        "tags": [
+          "Comentarios"
+        ],
+        "description": "Lista de Comentarios",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Comentarios"
+        ],
+        "description": "Criar um novo comentario",
+        "parameters": [
+          {
+            "name": "comentario",
+            "in": "body",
+            "description": "Dados do comentario",
+            "schema": {
+              "$ref": "#/definitions/ComentarioCreate"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da comentario",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Comentario"
+            },
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Falha ao registrar novo comentario."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comentarios/{id}": {
+      "get": {
+        "tags": [
+          "Comentarios"
+        ],
+        "description": "Busca um Comentario pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do comentario"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Comentario"
+            },
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "falha ao exibir comentario"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Comentarios"
+        ],
+        "description": "Atualiza os dados de um comentario já criado",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "comentarios",
+            "in": "body",
+            "description": "Dados do comentario",
+            "schema": {
+              "$ref": "#/definitions/ComentarioUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Comentario"
+            },
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Não foi possivel editar o comentario"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Comentarios"
+        ],
+        "description": "Obtem um comentario pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do comentario"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/ComentarioDelete"
+            },
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Falha ao deletar comentario."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Contatos": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 123
+        },
+        "name": {
+          "type": "string",
+          "example": "Luis"
+        },
+        "email": {
+          "type": "string",
+          "example": "luis.teste@email.com"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "53999999"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "telefone"
+      ]
+    },
+    "ContatosCreate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Luis"
+        },
+        "email": {
+          "type": "string",
+          "example": "luis.teste@email.com"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "53999999"
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "telefone"
+      ]
+    },
+    "Comentario": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 123
+        },
+        "name": {
+          "type": "string",
+          "example": "Luis"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "ComentarioCreate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Luis"
+        },
+        "comentario": {
+          "type": "string",
+          "example": "Comentario documentação"
+        }
+      },
+      "required": [
+        "name",
+        "comentario"
+      ]
+    },
+    "ComentarioUpdate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Luis"
+        },
+        "comentario": {
+          "type": "string",
+          "example": "Comentario documentação"
+        }
+      },
+      "required": [
+        "name",
+        "comentario"
+      ]
+    },
+    "ComentarioDelete": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 123
+        },
+        "name": {
+          "type": "string",
+          "example": "Luis"
+        },
+        "comentario": {
+          "type": "string",
+          "example": "Comentario documentação"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "comentario"
+      ]
+    }
+  }
 }

@@ -26,7 +26,7 @@ class ComentarioController {
         }
         catch (error) {
             return res.status(400).send({
-                message: "Falha ao exibir comentarios"
+                message: "Falha ao exibir comentario"
             });
         }
     }
