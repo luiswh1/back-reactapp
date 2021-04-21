@@ -4,6 +4,7 @@ import './database/index';
 
 import ComentarioRout from './app/routes/comentario';
 import ContatoRout from './app/routes/contatos';
+import DocsRout from './app/routes/docs';
 
 const cors = require("cors");
 
@@ -32,6 +33,7 @@ class App {
     routers() {
        this.server.use(ComentarioRout);
        this.server.use(ContatoRout);
+       this.server.use(DocsRout);
        
     }
 }
